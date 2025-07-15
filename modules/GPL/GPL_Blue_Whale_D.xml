@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><PAMGUARD>
+    <INFO CONFIGURATION="C:\PamguardTest\NOAA\NOAADefaults.psfx" JAVA="16" RELEASETYPE="BETA" REVISION="$Rev: 6165 $" TIMESTAMP="23 September 2021 at 08:45:56 UTC" VERSION="2.01.0601"/>
+    <MODULES>
+        <MODULE Java.class="gpl.GPLControlledUnit" UnitName="GPL Detector" UnitType="GPL Detector">
+            <PROCESS Name="GPL Detector">
+                <Input Channels="0x1" Name="FFT, FFT"/>
+                <Output Channels="0x1" Name="GPL Detector, GPL Detector Whitened Spectrogram" SampleRate="2000.0" Type="fftManager.FFTDataUnit"/>
+                <Output Channels="0x1" Name="GPL Detector, GPL Detector Level" SampleRate="2000.0" Type="gpl.GPLStateDataUnit"/>
+                <Output Channels="0x1" Name="GPL Detector, GPL Detector Detections" SampleRate="2000.0" Type="gpl.GPLDetection"/>
+            </PROCESS>
+            <CONFIGURATION>
+                <SETTINGS Class="gpl.GPLParameters" Name="GPL Detector" Type="GPL Detector" Version="1">
+                    <contourMerge Class="gpl.contour.ContourMerge" Value="Separate all contours"/>
+                    <thresh Class="double" Value="200.0"/>
+                    <minContourArea Class="int" Value="10"/>
+                    <blockParams Class="PamguardMVC.blockprocess.PamBlockParams">
+                        <blockLengthMillis Class="long" Value="75000"/>
+                        <blockMode Class="PamguardMVC.blockprocess.BlockMode" Value="Blocked Processing"/>
+                    </blockParams>
+                    <maxCallLengthSeconds Class="double" Name="Maximum length" Value="10.0"/>
+                    <minCallLengthSeconds Class="double" Name="Minimum length" Value="1.0"/>
+                    <minPeakGap Class="int" Name="Minimum gap" Value="2"/>
+                    <fftSourceName Class="java.lang.String" Value="FFT"/>
+                    <xp2 Class="double" Value="0.5"/>
+                    <xp1 Class="double" Value="2.5"/>
+                    <backgroundTimeSecs Class="double" Value="75.0"/>
+                    <contourCut Class="double" Value="6.0"/>
+                    <minFreq Class="double" Value="35.0"/>
+                    <description Class="java.lang.String" Value="Blue whale D Defaults&#10;Recommended Sample Rate 2000Hz&#10;FFT Length 2048 pt&#10;FFT Hop 128 pt"/>
+                    <white_fac_x Class="double" Value="1.5"/>
+                    <maxFreq Class="double" Value="90.0"/>
+                    <importFile Class="java.lang.String" Value="C:\PamguardTest\NOAA\GPL_Blue_Whale_D.xml"/>
+                    <connectType Class="gpl.GPLParameters$ConnectType" Value="CONNECT4"/>
+                    <sequenceMap Class="int" Value="1"/>
+                    <noise_ceiling Class="double" Value="50.0"/>
+                </SETTINGS>
+            </CONFIGURATION>
+        </MODULE>
+    </MODULES>
+</PAMGUARD>
